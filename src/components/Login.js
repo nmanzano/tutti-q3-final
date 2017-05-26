@@ -1,17 +1,24 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
+import { Button } from './common';
 
 class Login extends Component {
   render() {
     return (
-      <View>
-        <Text>
-          Testing 1, 2, 3
-        </Text>
+      <View style={styles.viewPosition}>
+        <Button />
       </View>
     );
   }
 }
 
+const styles = {
+  viewPosition: {
+    top: 430,
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
+};
 
 export default Login;
