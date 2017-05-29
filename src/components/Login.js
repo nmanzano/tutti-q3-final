@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import firebase from 'firebase';
 import { View, Text, TextInput } from 'react-native';
 import { Button } from './common/Button';
 
@@ -8,6 +9,33 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = { text: '' };
+  }
+
+  state = { email: '', password: '' }
+
+  onButtonPress() {
+    const { email, password } = this.state;
+
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .then(this.onLoginSuccess.bind(this))
+      .catch(() => {
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+          .then(this.onLoginSuccess.bind(this))
+          .catch(this.onLoginFail.bind(this));
+      });
+  }
+
+  onLoginFail() {
+    this.setState({
+      error: 'Authentication Failed'
+    });
+  }
+
+  onLoginSuccess() {
+    this.setState({
+      email: '',
+      password: ''
+    });
   }
 
   render() {
@@ -59,7 +87,6 @@ const styles = {
   titleFont: {
     fontFamily: 'Open Sans',
     fontWeight: 'bold',
-    // width: 30,
     height: 28.7,
     fontSize: 23.7,
     letterSpacing: -0.24,
@@ -85,6 +112,7 @@ const styles = {
   },
   usernameTxt: {
     fontFamily: 'Open Sans',
+    width: 182,
     fontSize: 25.7,
     fontWeight: '300',
     textAlign: 'left',

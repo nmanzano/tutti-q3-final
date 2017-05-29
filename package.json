@@ -19,7 +19,9 @@
     "react-test-renderer": "16.0.0-alpha.6"
   },
   "rnpm": {
-    "assets": ["./assets/fonts"]
+    "assets": [
+      "./assets/fonts"
+    ]
   },
   "jest": {
     "preset": "react-native"
