@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import firebase from 'firebase';
 import Login from './components/Login';
+import Signup from './components/Signup';
 import { Button } from './components/common/Button';
 
 class App extends Component {
@@ -36,7 +37,7 @@ class App extends Component {
   render() {
     return (
       <View>
-        <Login />
+        <Signup />
       </View>
     );
   }
