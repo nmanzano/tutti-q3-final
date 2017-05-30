@@ -1,13 +1,15 @@
 import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const FacebookButton = ({ onPress }) => {
   const { buttonStyle, textStyle } = styles;
 
     return (
       <TouchableOpacity onPress={onPress} style={buttonStyle}>
+        <Icon name="facebook-official" size={20} color="#fcfafa" style={styles.facebookIcon} />
         <Text style={textStyle}>
-          Sign up with Facebook
+           Sign up with Facebook
         </Text>
       </TouchableOpacity>
     );
@@ -37,6 +39,11 @@ const styles = {
     },
     shadowRadius: 4,
     shadowOpacity: 1
+  },
+  facebookIcon: {
+    // flex: 2,
+
+
   }
 };
 
