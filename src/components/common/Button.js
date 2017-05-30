@@ -24,8 +24,10 @@ const styles = {
     paddingBottom: 10
   },
   buttonStyle: {
-    width: 179,
-    borderRadius: 6,
+    // width: 179,
+    width: 237,
+    height: 53,
+    borderRadius: 7,
     backgroundColor: 'rgb(0, 138, 216)',
     shadowColor: 'rgba(0,0,0,0.5)',
     shadowOffset: {

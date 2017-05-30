@@ -87,9 +87,9 @@ const styles = {
   titleFont: {
     fontFamily: 'Open Sans',
     fontWeight: 'bold',
-    height: 28.7,
-    fontSize: 23.7,
-    letterSpacing: -0.24,
+    height: 56,
+    fontSize: 41,
+    lineHeight: 56,
     textAlign: 'center',
   },
   gettingStarted: {
@@ -99,16 +99,22 @@ const styles = {
   },
   gettingStartedText: {
     fontFamily: 'Open Sans',
+    height: 32,
     fontSize: 23,
+    lineHeight: 32,
     fontWeight: '300',
     textAlign: 'center'
   },
   usernamePosition: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     top: 160,
-    padding: 10
+    padding: 10,
+    width: 182,
+    left: 93,
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderColor: 'black',
   },
   usernameTxt: {
     fontFamily: 'Open Sans',
@@ -116,11 +122,12 @@ const styles = {
     fontSize: 25.7,
     fontWeight: '300',
     textAlign: 'left',
-    height: 40
+    height: 40,
   },
   passwdPosition: {
     top: 180,
-    padding: 10
+    padding: 10,
+    left: 93,
   },
   passwdTxt: {
     fontFamily: 'Open Sans',
@@ -132,7 +139,7 @@ const styles = {
   buttonPosition: {
     justifyContent: 'center',
     alignItems: 'center',
-    top: 220,
+    top: 225,
   }
 };
 

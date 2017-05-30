@@ -17,16 +17,20 @@ const styles = {
   textStyle: {
     textAlign: 'center',
     fontFamily: 'Open Sans',
-    color: 'rgb(255,255,255)',
-    fontSize: 14,
+    color: '#fcfafa',
+    fontWeight: '400',
+    fontSize: 13,
+    lineHeight: 18,
     paddingTop: 10,
     paddingBottom: 10
   },
   buttonStyle: {
-    width: 179,
-    borderRadius: 6,
-    backgroundColor: '#34498F',
-    shadowColor: 'rgba(0,0,0,0.5)',
+    // width: 179,
+    height: 54,
+    width: 237,
+    borderRadius: 4,
+    backgroundColor: '#3C549A',
+    shadowColor: '#374D90',
     shadowOffset: {
       width: 0,
       height: 1

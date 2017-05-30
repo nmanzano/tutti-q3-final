@@ -44,13 +44,14 @@ const styles = {
   mainView: {
     height: 1000,
     width: null,
-    backgroundColor: '#F5005D'
+    backgroundColor: '#EA415D'
   },
   viewPosition: {
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    top: 46.7,
+    // top: 46.7,
+    top: 70,
   },
   titleFont: {
     fontFamily: 'Open Sans',
@@ -63,7 +64,7 @@ const styles = {
   gettingStarted: {
     alignItems: 'center',
     justifyContent: 'center',
-    top: 75.7,
+    top: 90,
   },
   gettingStartedText: {
     fontFamily: 'Open Sans',
@@ -80,12 +81,14 @@ const styles = {
   haveAccount: {
     justifyContent: 'center',
     alignItems: 'center',
-    top: 160,
+    top: 140,
   },
   haveAccountTxt: {
     color: '#fcf9f9',
     fontFamily: 'Open Sans',
-    fontSize: 16,
+    fontSize: 18,
+    lineHeight: 24,
+    height: 24,
     textAlign: 'center',
   }
 };
