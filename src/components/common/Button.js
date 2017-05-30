@@ -18,8 +18,8 @@ const styles = {
     textAlign: 'center',
     fontFamily: 'Open Sans',
     fontWeight: 'bold',
-    color: 'rgb(255,255,255)',
-    fontSize: 20,
+    color: '#fff',
+    fontSize: 29,
     paddingTop: 10,
     paddingBottom: 10
   },
@@ -28,7 +28,7 @@ const styles = {
     width: 237,
     height: 53,
     borderRadius: 7,
-    backgroundColor: 'rgb(0, 138, 216)',
+    backgroundColor: '#008AD8',
     shadowColor: 'rgba(0,0,0,0.5)',
     shadowOffset: {
       width: 0,

@@ -71,6 +71,21 @@ class Login extends Component {
         <View style={styles.buttonPosition}>
           <Button />
         </View>
+
+        <View style={styles.needAccountPos}>
+          <View style={styles.DontHaveAcctPos}>
+            <Text style={styles.DontHaveAcctTxt}>
+              Don't have an account?
+            </Text>
+          </View>
+          <View style={styles.signUpPos}>
+            <Text style={styles.signUpTxt}>
+              Sign up
+            </Text>
+          </View>
+        </View>
+
+
       </View>
 
     );
@@ -82,7 +97,7 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    top: 46.7,
+    top: 50,
   },
   titleFont: {
     fontFamily: 'Open Sans',
@@ -95,7 +110,8 @@ const styles = {
   gettingStarted: {
     alignItems: 'center',
     justifyContent: 'center',
-    top: 85.7,
+    // top: 85.7,
+    top: 87,
   },
   gettingStartedText: {
     fontFamily: 'Open Sans',
@@ -140,6 +156,33 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     top: 225,
+  },
+  needAccountPos: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    top: 300
+  },
+  DontHaveAcctPos: {
+
+  },
+  DontHaveAcctTxt: {
+    fontFamily: 'Open Sans',
+    fontSize: 13,
+    fontWeight: '300',
+    color: '#373e52',
+    lineHeight: 18,
+  },
+  signUpPos: {
+    left: 10
+  },
+  signUpTxt: {
+    fontFamily: 'Open Sans',
+    fontSize: 13,
+    fontStyle: 'italic',
+    fontWeight: '600',
+    lineHeight: 18,
+    // textAlign: 'center',
+    color: '#f60068'
   }
 };
 
