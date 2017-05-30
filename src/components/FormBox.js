@@ -14,7 +14,7 @@ class FormBox extends Component {
         <View style={styles.formBoxStyle}>
         </View>
     </View>
-    )
+    );
   }
 }
 const styles = {
