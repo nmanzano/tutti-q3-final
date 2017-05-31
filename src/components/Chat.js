@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
-import { Header, Footer, Button } from './common/Index';
+import { View, Button } from 'react-native';
+import firebase from 'firebase';
+import { Header, Footer } from './common/Index';
 
 class Chat extends Component {
+
   render() {
     return (
       <View>
@@ -10,8 +12,11 @@ class Chat extends Component {
           <Header />
         </View>
 
-        <View>
-          <Button> Log Out </Button>
+        <View style={styles.logOutBtn}>
+        <Button
+          onPress={() => firebase.auth().signOut()}
+          title="Log Out"
+        />
         </View>
 
         <View>
@@ -21,6 +26,12 @@ class Chat extends Component {
     );
   }
 }
+
+const styles = {
+  logOutBtn: {
+    top: 480
+  }
+};
 
 
 export default Chat;
