@@ -3,8 +3,6 @@ import firebase from 'firebase';
 import { View, Text, TextInput } from 'react-native';
 import { Button } from './common/Button';
 
-// const { titleFont } = styles;
-
 class Login extends Component {
   constructor(props) {
     super(props);

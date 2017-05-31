@@ -6,3 +6,4 @@ export * from './Header';
 export * from './Input';
 export * from './CreateAccountBtn';
 export * from './Spinner';
+export * from './Footer';
