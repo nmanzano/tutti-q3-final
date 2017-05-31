@@ -9,6 +9,10 @@ import { Button } from './components/common/Button';
 class App extends Component {
   state = { loggedIn: null };
 
+  // componentWillMount is a lifecycle method. A lifecycle method is
+  // a method that is automatically invoked inside of our component.
+  // all we have to do is define it and if we define it, it will be
+  // automatically called.
   componentWillMount() {
     firebase.initializeApp({
       apiKey: 'AIzaSyAbDNDySXhkB7X73NoT3s5Lz_go8Is2mCc',
