@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
 import { View, Text } from 'react-native';
-import { Button, Input } from './common/Index';
+import { Button, Input, Spinner } from './common/Index';
 
 class Login extends Component {
   constructor(props) {
@@ -11,15 +11,19 @@ class Login extends Component {
 
   // state is what we use to deal with feedback from the user or react to user
   // events
-  state = { email: '', password: '' }
+  state = { email: '', password: '', error: '', loading: false };
 
   onButtonPress() {
     // reference email and password from this.state
     const { email, password } = this.state;
 
+    this.setState({ error: '', loading: true });
+
     firebase.auth().signInWithEmailAndPassword(email, password)
+      // if success log in
       .then(this.onLoginSuccess.bind(this))
       .catch(() => {
+        // if signin fails. Create a user account
         firebase.auth().createUserWithEmailAndPassword(email, password)
           .then(this.onLoginSuccess.bind(this))
           .catch(this.onLoginFail.bind(this));
@@ -28,15 +32,28 @@ class Login extends Component {
 
   onLoginFail() {
     this.setState({
-      error: 'Authentication Failed'
+      error: 'Authentication Failed',
+      loading: false,
     });
   }
 
   onLoginSuccess() {
+    // update the state object upon login success
     this.setState({
       email: '',
-      password: ''
+      password: '',
+      loading: false,
+      error: ''
     });
+  }
+
+  renderButton() {
+    if (this.state.loading) {
+      return <Spinner size='large' />;
+    }
+      return (
+        <Button onPress={this.onButtonPress.bind(this)} />
+      );
   }
 
   render() {
@@ -77,8 +94,13 @@ class Login extends Component {
           />
         </View>
 
+        <View>
+          <Text style={styles.authError}>
+            {this.state.error}
+          </Text>
+        </View>
         <View style={styles.buttonPosition}>
-          <Button onPress={this.onButtonPress.bind(this)} />
+          { this.renderButton() }
         </View>
 
         <View style={styles.needAccountPos}>
@@ -159,6 +181,12 @@ const styles = {
     fontWeight: '600',
     lineHeight: 18,
     color: '#f60068'
+  },
+  authError: {
+    fontFamily: 'Open Sans',
+    fontSize: 20,
+    color: 'red',
+    alignSelf: 'center'
   }
 };
 

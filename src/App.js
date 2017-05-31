@@ -4,7 +4,7 @@ import firebase from 'firebase';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Chat from './components/Chat';
-import { Button } from './components/common/Button';
+import { Spinner } from './components/common/Index';
 
 class App extends Component {
   state = { loggedIn: null };
@@ -22,28 +22,36 @@ class App extends Component {
       storageBucket: 'tutti-724e4.appspot.com',
       messagingSenderId: '77125320804'
     });
+
+    firebase.auth().onAuthStateChanged((user) => {
+      // checks to see if a user is logged in or not
+      if (user) {
+        this.setState({ loggedIn: true });
+      } else {
+        this.setState({ loggedIn: false });
+      }
+    });
   }
 
   renderContent() {
     switch (this.state.loggedIn) {
       case true:
         return (
-          <Button onPress={() => firebase.auth().signOut()}>
-            Log Out
-          </Button>
+          <Chat />
         );
 
       case false:
         return <Login />;
 
       default:
+        return <Spinner size='large' />;
     }
   }
   render() {
     return (
       <View>
-        <Login />
-        {/* <Chat /> */}
+        {/* <Login /> */}
+        { this.renderContent()}
         {/* <Signup /> */}
       </View>
     );

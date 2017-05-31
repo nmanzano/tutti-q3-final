@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
-import { Header } from './common/Header';
-import { Footer } from './common/Footer';
+import { View } from 'react-native';
+import { Header, Footer, Button } from './common/Index';
 
 class Chat extends Component {
   render() {
@@ -12,9 +11,7 @@ class Chat extends Component {
         </View>
 
         <View>
-          <Text>
-            Test
-          </Text>
+          <Button> Log Out </Button>
         </View>
 
         <View>

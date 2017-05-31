@@ -7,10 +7,10 @@ const Input = ({ label, value, onChangeText, placeholder, secureTextEntry }) => 
     <View style={containerStyle}>
       <Text>{label}</Text>
       <TextInput
+        style={inputStyle}
         secureTextEntry={secureTextEntry}
         placeholder={placeholder}
         autoCorrect={false}
-        style={inputStyle}
         value={value}
         onChangeText={onChangeText}
       />
@@ -28,7 +28,7 @@ const styles = {
     height: 20,
   },
   textLabel: {
-    alignItems: 'flex-start'  
+    alignItems: 'flex-start'
   },
   containerStyle: {
     justifyContent: 'center',
