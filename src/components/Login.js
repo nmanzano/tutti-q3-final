@@ -86,7 +86,7 @@ class Login extends Component {
 
         <View>
           <Input
-            secureTextEntry
+            secureeTextEntry
             value={this.state.password}
             label='password'
             placeholder='password'

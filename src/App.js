@@ -50,9 +50,7 @@ class App extends Component {
   render() {
     return (
       <View>
-        {/* <Login /> */}
-        { this.renderContent()}
-        {/* <Signup /> */}
+        {this.renderContent()}
       </View>
     );
   }
