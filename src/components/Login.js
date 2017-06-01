@@ -79,6 +79,7 @@ class Login extends Component {
             value={this.state.email}
             label='email'
             placeholder='user@gmail.com'
+            keyboardType='email-address'
             // prop that sets property text with function
             onChangeText={email => this.setState({ email })}
           />
@@ -86,7 +87,7 @@ class Login extends Component {
 
         <View>
           <Input
-            secureeTextEntry
+            secureTextEntry
             value={this.state.password}
             label='password'
             placeholder='password'
@@ -161,9 +162,6 @@ const styles = {
     justifyContent: 'center',
     top: 300
   },
-  DontHaveAcctPos: {
-
-  },
   DontHaveAcctTxt: {
     fontFamily: 'Open Sans',
     fontSize: 13,
@@ -187,7 +185,8 @@ const styles = {
     fontSize: 20,
     color: 'red',
     alignSelf: 'center'
-  }
+  },
+
 };
 
 export default Login;
