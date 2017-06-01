@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import firebase from 'firebase';
 import Login from './components/Login';
+import Signup from './components/Signup';
 import Chat from './components/Chat';
 import { Spinner } from './components/common/Index';
 
 class App extends Component {
-  state = { loggedIn: null };
+  state = { loggedIn: null, userID: '', email: '' };
 
   // componentWillMount is a lifecycle method. A lifecycle method is
   // a method that is automatically invoked inside of our component.
@@ -23,7 +24,11 @@ class App extends Component {
     });
 
     firebase.auth().onAuthStateChanged((user) => {
-      // checks to see if a user is logged in or not
+
+    this.setState({
+      userID: firebase.auth().currentUser.uid
+    });
+
       if (user) {
         this.setState({ loggedIn: true });
       } else {
@@ -32,11 +37,14 @@ class App extends Component {
     });
   }
 
+
   renderContent() {
     switch (this.state.loggedIn) {
       case true:
         return (
-          <Chat />
+          <Chat
+            username={this.state.userID}
+          />
         );
 
       case false:
@@ -50,6 +58,7 @@ class App extends Component {
     return (
       <View>
         {this.renderContent()}
+        {/* <Signup /> */}
       </View>
     );
   }

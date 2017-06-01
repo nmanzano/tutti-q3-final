@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { View, TextInput, Text, Button } from 'react-native';
 import firebase from 'firebase';
-// import { Button } from './common/Index';
-import Login from './Login';
-
+import { Card, CardSection } from './common/Index';
 
 class Chat extends Component {
 
@@ -15,15 +13,24 @@ class Chat extends Component {
 
    };
 
-    firebase.database().ref('Room').on('child_added', (snapshot) => {
+    firebase.database().ref('Room').child('messages').on('child_added', (snapshot) => {
       console.log({ messages: snapshot.val() });
       // this.setState.message.push(snapshot.val())
       const messages = this.state.messages;
       messages.push(snapshot.val());
       this.setState({ messages });
     });
+    console.log(this.props.username);
   }
 
+
+  // const user = firebase.auth().currentUser;
+  // const email;
+  //
+  //
+  // if (user != null) {
+  //   email = user.email
+  // }
 
   render() {
     return (
@@ -41,18 +48,20 @@ class Chat extends Component {
               ))}
 
 
-        <View>
+        {/* <View>
 
         <TextInput
             style={styles.textInputStyleTwo}
             onChangeText={(value) => this.setState({ value })}
             value={this.state.value}
         />
-          </View>
+
+          </View> */}
 
 
         <View style={styles.inputpostionStyle}>
           {/* <Input footerText="Type" placeholder="here"></Input> */}
+
 
           <TextInput
              ref={clearChat => this.chattextInput = clearChat}
@@ -63,16 +72,21 @@ class Chat extends Component {
 
         </View>
 
+
+        {/* This button below when clicked sends data to firebase */}
         <View style={styles.buttonpostionStyle}>
           <Button
             title="send"
             onPress={() => {
-            firebase.database().ref('Room').push(this.state.chat: text);
+            firebase.database().ref('Room')
+            .child(this.props.username)
+            .push(this.state.chat: text);
             this.chattextInput.setNativeProps({ text: '' });
           }}
           />
-
         </View>
+
+
         <View style={styles.logOutBtn}>
         <Button
           onPress={() => firebase.auth().signOut()}
@@ -80,6 +94,12 @@ class Chat extends Component {
         />
         </View>
 
+
+        <View>
+          <Text>
+            {this.userID}
+          </Text>
+        </View>
 
       </View>
 
@@ -96,17 +116,19 @@ const styles = {
     height: 23,
     justifyContent: 'flex-end',
     width: 60,
-    left: 310
+    left: 310,
+    top: 300
   },
   inputpostionStyle: {
-    bottom: 30,
-    height: 18,
-    width: 315
+    // bottom: 30,
+    // height: 18,
+    // width: 315
+    top: 300,
   },
   chatwindowStyle: {
     backgroundColor: 'yellow',
-    flexDirection: 'row',
-    top: 10,
+    // flexDirection: 'row',
+    top: 200,
   },
   textInputStyle: {
     height: 40, borderColor: 'gray', borderWidth: 1
