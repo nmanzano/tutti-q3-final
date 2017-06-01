@@ -25,12 +25,12 @@ class App extends Component {
 
     firebase.auth().onAuthStateChanged((user) => {
 
-    this.setState({
-      userID: firebase.auth().currentUser.uid
-    });
 
       if (user) {
-        this.setState({ loggedIn: true });
+        this.setState({
+          loggedIn: true,
+          userID: firebase.auth().currentUser.uid
+        });
       } else {
         this.setState({ loggedIn: false });
       }
