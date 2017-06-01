@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import firebase from 'firebase';
 import Login from './components/Login';
-import ChatWindow from './components/Chat_Window';
+import Chat from './components/Chat';
 import { Spinner } from './components/common/Index';
 
 class App extends Component {
@@ -36,7 +36,7 @@ class App extends Component {
     switch (this.state.loggedIn) {
       case true:
         return (
-          <ChatWindow />
+          <Chat />
         );
 
       case false:

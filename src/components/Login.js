@@ -52,7 +52,10 @@ class Login extends Component {
       return <Spinner size='large' />;
     }
       return (
-        <Button onPress={this.onButtonPress.bind(this)} />
+        <Button
+          title='Login'
+          onPress={this.onButtonPress.bind(this)}
+        />
       );
   }
 
