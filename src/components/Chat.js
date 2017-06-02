@@ -12,7 +12,7 @@ class Chat extends Component {
    };
 
     // displaying the data from firebase
-    firebase.database().ref('Room').child('test').on('value', (snapshot) => {
+    firebase.database().ref('Room').child('Chat').on('value', (snapshot) => {
       console.log({ messages: snapshot.val() });
       // this.setState.message.push(snapshot.val())
       let msg = snapshot.val();
@@ -82,7 +82,7 @@ class Chat extends Component {
           <Button
             title="send"
             onPress={() => {
-            firebase.database().ref('Room').child('test')
+            firebase.database().ref('Room').child('Chat')
             .child(this.props.username)
             .push(this.state.chat: text);
             this.chattextInput.setNativeProps({ text: '' });
