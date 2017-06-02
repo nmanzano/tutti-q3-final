@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import firebase from 'firebase';
 import Login from './components/Login';
-import Signup from './components/Signup';
+// import Signup from './components/Signup';
 import Chat from './components/Chat';
 import { Spinner } from './components/common/Index';
 
@@ -23,9 +23,8 @@ class App extends Component {
       messagingSenderId: '77125320804'
     });
 
+
     firebase.auth().onAuthStateChanged((user) => {
-
-
       if (user) {
         this.setState({
           loggedIn: true,
