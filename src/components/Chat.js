@@ -15,12 +15,17 @@ class Chat extends Component {
     firebase.database().ref('Room').child('test').on('value', (snapshot) => {
       console.log({ messages: snapshot.val() });
       // this.setState.message.push(snapshot.val())
-      const messages = this.state.messages;
-      messages.map(message => message.push(snapshot.val()));
-      this.setState({ messages });
-      console.log(this.state.message);
+      let msg = snapshot.val();
+      let messages = [];
+      for (let outerKey in msg) {
+        for (let innerKey in msg[outerKey]) {
+          messages.push(msg[outerKey][innerKey]);
+        }
+      }
+      console.log(messages);
+      this.setState({ "messages": messages});
+      // console.log(snapsh);
     });
-    console.log(this.props.username);
   }
 
   render() {
