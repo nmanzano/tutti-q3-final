@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { View, TextInput, Text, Button } from 'react-native';
+import { View, TextInput, Text, Button, ScrollView } from 'react-native';
 import firebase from 'firebase';
-import { Card, CardSection } from './common/Index';
 
 class Chat extends Component {
-
 
   constructor(props) {
     super(props);
@@ -13,24 +11,17 @@ class Chat extends Component {
 
    };
 
-    firebase.database().ref('Room').child('messages').on('child_added', (snapshot) => {
-      console.log({ messages: snapshot.val() });
-      // this.setState.message.push(snapshot.val())
-      const messages = this.state.messages;
-      messages.push(snapshot.val());
-      this.setState({ messages });
-    });
-    console.log(this.props.username);
-  }
 
+  firebase.database().ref('Room').child(this.props.username).on('child_added', (snapshot) => {
+    // console.log({ messages: snapshot.val() });
+    // this.setState.message.push(snapshot.val())
+    const messages = this.state.messages;
+    messages.push(snapshot.val());
+    this.setState({ messages });
+  });
+  console.log(this.props.username);
+}
 
-  // const user = firebase.auth().currentUser;
-  // const email;
-  //
-  //
-  // if (user != null) {
-  //   email = user.email
-  // }
 
   render() {
     return (
@@ -39,31 +30,40 @@ class Chat extends Component {
       <View>
 
 
+        {/* Below is the button for logging out of the current user */}
+        <View style={styles.logOutPostion}>
+          <View style={styles.logOutBtn}>
+
+            <Button
+              onPress={() => firebase.auth().signOut()}
+              title='Log Out'
+            />
+
+          </View>
+
+        </View>
+
+
+  <ScrollView style={styles.chatwindowStyle}>
             {this.state.messages.map((message, index) => (
-                <View key={`message-${index}`} style={styles.chatwindowStyle} >
-                  <Text style={styles.textViewStyle} >
+                <View key={`message-${index}`}  >
+
+                <Text style={styles.textViewStyle} >
                     {message}
                   </Text>
+
+
                 </View>
               ))}
-
-
-        {/* <View>
-
-        <TextInput
-            style={styles.textInputStyleTwo}
-            onChangeText={(value) => this.setState({ value })}
-            value={this.state.value}
-        />
-
-          </View> */}
+  </ScrollView>
 
 
         <View style={styles.inputpostionStyle}>
           {/* <Input footerText="Type" placeholder="here"></Input> */}
 
-
           <TextInput
+            style={styles.messageInputStyle}
+            placeholder="Type your message"
              ref={clearChat => this.chattextInput = clearChat}
              style={styles.textInputStyle}
              onChangeText={(text) => this.setState({ chat: text })}
@@ -87,20 +87,6 @@ class Chat extends Component {
         </View>
 
 
-        <View style={styles.logOutBtn}>
-        <Button
-          onPress={() => firebase.auth().signOut()}
-          title='Log Out'
-        />
-        </View>
-
-
-        <View>
-          <Text>
-            {this.userID}
-          </Text>
-        </View>
-
       </View>
 
     );
@@ -112,38 +98,59 @@ const styles = {
   buttonpostionStyle: {
     bottom: 15,
     alignItems: 'flex-end',
-    flexDirection: 'column',
-    height: 23,
     justifyContent: 'flex-end',
-    width: 60,
     left: 310,
-    top: 300
-  },
-  inputpostionStyle: {
-    // bottom: 30,
-    // height: 18,
-    // width: 315
-    top: 300,
+    height: 20,
+    width: 60,
   },
   chatwindowStyle: {
-    backgroundColor: 'yellow',
-    // flexDirection: 'row',
-    top: 200,
+      backgroundColor: '#f0f8ff',
+      height: 550,
+      top: 5,
+    },
+  inputpostionStyle: {
+    alignItems: 'flex-end',
+    justifyContent: 'flex-end',
+    width: 300,
+    top: 10,
+    left: 6
+  },
+  messageInputStyle: {
+    height: 17,
+    opacity: 0.64,
+    color: '#008AD8',
+    fontfamily: 'Lucida Grande',
+    fontsize: 14,
+    lineheight: 17
   },
   textInputStyle: {
-    height: 40, borderColor: 'gray', borderWidth: 1
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1
   },
-  textInputStyleTwo: {
-    height: 40, borderColor: 'gray', borderWidth: 1, bottom: 540
-  },
+
   textViewStyle: {
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column',
-    left: 100
+    left: 6
+  },
+  logOutPostion: {
+    height: 60,
+    width: 375,
+    borderWidth: 1,
+    borderRadius: 2,
+    borderColor: '#ddd',
+    borderBottomWidth: 0,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    elevation: 1
   },
   logOutBtn: {
-    // top: 480
+    right: 150,
+    top: 20
   }
 
 };
