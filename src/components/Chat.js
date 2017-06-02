@@ -11,17 +11,17 @@ class Chat extends Component {
 
    };
 
-
-  firebase.database().ref('Room').child(this.props.username).on('child_added', (snapshot) => {
-    // console.log({ messages: snapshot.val() });
-    // this.setState.message.push(snapshot.val())
-    const messages = this.state.messages;
-    messages.push(snapshot.val());
-    this.setState({ messages });
-  });
-  console.log(this.props.username);
-}
-
+    // displaying the data from firebase
+    firebase.database().ref('Room').child('test').on('value', (snapshot) => {
+      console.log({ messages: snapshot.val() });
+      // this.setState.message.push(snapshot.val())
+      const messages = this.state.messages;
+      messages.map(message => message.push(snapshot.val()));
+      this.setState({ messages });
+      console.log(this.state.message);
+    });
+    console.log(this.props.username);
+  }
 
   render() {
     return (
@@ -45,13 +45,13 @@ class Chat extends Component {
 
 
   <ScrollView style={styles.chatwindowStyle}>
+            {/* sorting out the view */}
             {this.state.messages.map((message, index) => (
-                <View key={`message-${index}`}  >
+                <View key={`message-${index}`} >
 
                 <Text style={styles.textViewStyle} >
                     {message}
                   </Text>
-
 
                 </View>
               ))}
@@ -59,7 +59,6 @@ class Chat extends Component {
 
 
         <View style={styles.inputpostionStyle}>
-          {/* <Input footerText="Type" placeholder="here"></Input> */}
 
           <TextInput
             style={styles.messageInputStyle}
@@ -78,7 +77,7 @@ class Chat extends Component {
           <Button
             title="send"
             onPress={() => {
-            firebase.database().ref('Room')
+            firebase.database().ref('Room').child('test')
             .child(this.props.username)
             .push(this.state.chat: text);
             this.chattextInput.setNativeProps({ text: '' });

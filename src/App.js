@@ -57,7 +57,7 @@ class App extends Component {
     return (
       <View>
         {this.renderContent()}
-        {/* <Signup /> */}
+        {/* <Login /> */}
       </View>
     );
   }
