@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { View, TextInput, Text, Button, ScrollView } from 'react-native';
 import firebase from 'firebase';
-
 class Chat extends Component {
 
   constructor(props) {
@@ -21,6 +20,7 @@ class Chat extends Component {
       for (let outerKey in msg) {
         for (let innerKey in msg[outerKey]) {
           messages.push(msg[outerKey][innerKey]);
+          messages.slice(0-16)
         }
       }
 

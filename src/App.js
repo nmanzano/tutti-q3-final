@@ -15,13 +15,22 @@ class App extends Component {
   // automatically called.
   componentWillMount() {
     firebase.initializeApp({
-      apiKey: 'AIzaSyAbDNDySXhkB7X73NoT3s5Lz_go8Is2mCc',
-      authDomain: 'tutti-724e4.firebaseapp.com',
-      databaseURL: 'https://tutti-724e4.firebaseio.com',
-      projectId: 'tutti-724e4',
-      storageBucket: 'tutti-724e4.appspot.com',
-      messagingSenderId: '77125320804'
-    });
+      apiKey: "AIzaSyC6eXJxzTFcj0scE4a9DUoPbfD5JkyhSzM",
+   authDomain: "chat-test-db.firebaseapp.com",
+   databaseURL: "https://chat-test-db.firebaseio.com",
+   projectId: "chat-test-db",
+   storageBucket: "",
+   messagingSenderId: "326946668398"
+  });
+
+      //below is the old code. Should be used to make it work. 
+      // apiKey: 'AIzaSyAbDNDySXhkB7X73NoT3s5Lz_go8Is2mCc',
+      // authDomain: 'tutti-724e4.firebaseapp.com',
+      // databaseURL: 'https://tutti-724e4.firebaseio.com',
+      // projectId: 'tutti-724e4',
+      // storageBucket: 'tutti-724e4.appspot.com',
+      // messagingSenderId: '77125320804'
+
 
 
     firebase.auth().onAuthStateChanged((user) => {
